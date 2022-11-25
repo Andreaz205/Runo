@@ -17,33 +17,17 @@ const Banner :FC = () => {
         setWidth(size.width)
     }, [size])
 
-    // useEffect(() => {
-    //     setWindow(window)
-    // }, [])
-    //
-    // useEffect(() => {
-    //     setWidth(window.innerWidth)
-    //     console.log('set window width ' +  width)
-    //     if (width && width > 1900 ) setWidth(1900)
-    // },[wind?.innerWidth])
-
-    console.log(x)
     const slideLeft = () => {
         if (x == 0) return
-        console.log(width)
         ref.current!.style.cssText = `transform: translateX(${x + width}px)`
-        console.log(x + width)
         setX(x + width)
     }
 
     const slideRight = () => {
         if (x == -width*2) return
-        console.log(width)
         ref.current!.style.cssText = `transform: translateX(${x - width}px)`
-        console.log(x-width)
         setX(x - width)
     }
-
     return (
         <div className={styles.bannerWrapper}>
             <div className={styles.banner}>
@@ -86,56 +70,6 @@ const Banner :FC = () => {
                     </div>
                 </div>
             </div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
-            <div>Hello</div>
         </div>
 
 

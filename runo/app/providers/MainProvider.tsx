@@ -1,6 +1,7 @@
 import React, {FC, PropsWithChildren} from 'react';
 import Layout from "../components/layout/Layout";
 import {QueryClient, QueryClientProvider} from "react-query";
+import HeadProvider from "./HeadProvider/HeadProvider";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -12,11 +13,14 @@ const queryClient = new QueryClient({
 
 const MainProvider :FC <PropsWithChildren>= ({children}) => {
     return (
-        <QueryClientProvider client={queryClient}>
-            <Layout>
-                {children}
-            </Layout>
-        </QueryClientProvider>
+        <HeadProvider>
+            <QueryClientProvider client={queryClient}>
+                <Layout>
+                    {children}
+                </Layout>
+            </QueryClientProvider>
+        </HeadProvider>
+
     );
 };
 
