@@ -7,7 +7,10 @@ import TopHeader from "./top-header/TopHeader";
 import HeaderBottom from "./header-bottom/HeaderBottom";
 import headerBottomData from "./header-bottom/header-bottom.data";
 
-const Header :FC = () => {
+const Header :FC = ({
+    transformDownContent,
+    transformUpContent
+}) => {
     let firstItem = headerBottomData[0].name
     let firstBottomLinks = headerBottomData[0].items
     const [isOpenDetails, setIsOpenDetails] = useState<boolean>(false)
@@ -42,7 +45,7 @@ const Header :FC = () => {
         let middleHeader = doc.querySelector('#middle-header')
         let topWrapper = doc.querySelector('#top-header')
         let headerWrapper = doc.querySelector('#header-wrapper')
-
+        transformDownContent()
         headerWrapper.style.cssText = 'transform: translateY(0px); transition: .3s ease-in-out'
         headerBottom.style.cssText = 'transition: .3s ease-in-out; position: absolute; bottom: -50px; width: 100vw'
         transform(false)
@@ -55,16 +58,16 @@ const Header :FC = () => {
         let middleHeader = doc.querySelector('#middle-header')
         let topWrapper = doc.querySelector('#top-header')
         let headerWrapper = doc.querySelector('#header-wrapper')
-
+        transformUpContent()
         headerWrapper.style.cssText = 'transform: translateY(-35px); transition: .3s ease-in-out'
-        headerBottom.style.cssText = 'transition: .3s ease-in-out; position: absolute; bottom: 0; width: 100vw'
+        headerBottom.style.cssText = 'transition: .3s ease-in-out; position: absolute; bottom: -5px; width: 100vw'
         transform(true)
     }
 
 
     useEffect(() => {
         const handleScroll = (event: any) => {
-            if (window.scrollY > 10) {
+            if (window.scrollY > 70) {
                 if (!transformed) {
                     transformIn()
                 }

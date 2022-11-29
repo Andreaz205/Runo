@@ -8,7 +8,7 @@ import BottomLinkItem from "./BottomLinkItem";
 
 const HeaderBottom = ({setActiveElement, setIsOpenDetails, isOpenDetails, bottomLinks, setBottomLinks}) => {
     const [term, setTerm] = useState<NavEnum>(NavEnum.goods)
-    const ref = useRef<HTMLDivElement>(null)
+    const ref = useRef<HTMLDivElement | null>(null)
 
     const enterCallback = (e: any) => {
         console.log(e.relatedTarget)
@@ -41,9 +41,9 @@ const HeaderBottom = ({setActiveElement, setIsOpenDetails, isOpenDetails, bottom
 
     return (
         <div className={styles.bottomWrapper} id='header-bottom-wrapper'>
-            <div className={styles.bottom} ref={ref}>
+            <div className={styles.bottom}>
                 <div className={styles.bottomBlock} >
-                    <div className={styles.linksBlock} id='header-bottom'>
+                    <div className={styles.linksBlock} id='header-bottom' ref={ref}>
                         {bottomLinks && bottomLinks.map(el =>(
                             <BottomLinkItem title={el.title} link={el.link} key={el.link}/>
                         ))}

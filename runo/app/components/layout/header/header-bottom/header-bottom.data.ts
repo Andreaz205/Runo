@@ -1,12 +1,5 @@
 import {INavItem} from "../header-navigation/navigation-items/nav-item.interface";
 
-interface IHeaderData {
-    goods: INavItem[],
-    rooms: INavItem[],
-    ideas: INavItem[],
-    about: INavItem[],
-}
-
 const headerBottomData = [
     {
         name: 'Товары',

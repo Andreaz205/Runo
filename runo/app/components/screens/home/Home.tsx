@@ -45,6 +45,46 @@ const items: ISliderItem[] = [
         oldPrice: 60000,
         sale: 10,
     },
+    {
+        title: 'Барселона Blue',
+        link: '/products/barcelona-bluee',
+        imagePath: '/some-path',
+        price: 50000,
+        oldPrice: 60000,
+        sale: 10,
+    },
+    {
+        title: 'Барселона Red',
+        link: '/products/barcelona-rede',
+        imagePath: '/some-path',
+        price: 50000,
+        oldPrice: 60000,
+        sale: 10,
+    },
+    {
+        title: 'Барселона Grey',
+        link: '/products/barcelona-greye',
+        imagePath: '/some-path',
+        price: 50000,
+        oldPrice: 60000,
+        sale: 10,
+    },
+    {
+        title: 'Барселона Brown',
+        link: '/products/barcelona-browne',
+        imagePath: '/some-path',
+        price: 50000,
+        oldPrice: 60000,
+        sale: 10,
+    },
+    {
+        title: 'Барселона White',
+        link: '/products/barcelona-whitee',
+        imagePath: '/some-path',
+        price: 50000,
+        oldPrice: 60000,
+        sale: 10,
+    },
 ]
 
 const Home :FC = () => {

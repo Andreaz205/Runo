@@ -7,14 +7,11 @@ const Details :FC = ({isOpenDetails, setActiveElement, setIsOpenDetails, setDefa
     const ref = useRef<HTMLDivElement | null>(null)
 
     const enterCallback = (e: any) => {
-        console.log('enter')
+
     }
 
     const leaveCallback = (e: any) => {
-        console.log(e.relatedTarget)
         if (e.relatedTarget?.id !== 'header-bottom') {
-            console.log(e.relatedTarget);
-            console.log('closing Details')
             setIsOpenDetails(false)
             setDefaultBottomLinks()
         }
