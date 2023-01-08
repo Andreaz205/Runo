@@ -6,16 +6,25 @@ import HeaderRightArea from "./HeaderRightArea";
 import TopHeader from "./top-header/TopHeader";
 import HeaderBottom from "./header-bottom/HeaderBottom";
 import headerBottomData from "./header-bottom/header-bottom.data";
+import dynamic from "next/dynamic";
+
+const DynamicHeaderBottom = dynamic(import('./header-bottom/HeaderBottom'), {
+    ssr: false
+})
 
 const Header :FC = ({
     transformDownContent,
-    transformUpContent
+    transformUpContent,
+    setIsOpenRegisterPopup
 }) => {
     let firstItem = headerBottomData[0].name
     let firstBottomLinks = headerBottomData[0].items
     const [isOpenDetails, setIsOpenDetails] = useState<boolean>(false)
+    const [isOpenHeaderBottom, setIsOpenHeaderBottom] = useState<boolean>(false)
     const [activeElement, setActiveElement] = useState(firstItem)
     const [bottomLinks, setBottomLinks] = useState(firstBottomLinks)
+    const [isTransformed, setIsTransformed] = useState(false)
+
     // const [doc, setDoc] = useState()
 
     let doc
@@ -36,6 +45,7 @@ const Header :FC = ({
     let transformed = false
 
     const transform = (flag: boolean) => {
+        setIsTransformed(flag)
         transformed = flag
     }
 
@@ -49,7 +59,6 @@ const Header :FC = ({
         headerWrapper.style.cssText = 'transform: translateY(0px); transition: .3s ease-in-out'
         headerBottom.style.cssText = 'transition: .3s ease-in-out; position: absolute; bottom: -50px; width: 100vw'
         transform(false)
-
     }
 
     const transformIn = () => {
@@ -74,15 +83,42 @@ const Header :FC = ({
             } else {
                 if (transformed) {
                     transformOut()
-
                 }
             }
         };
+        let middleHeader = doc.querySelector('#middle-header')
+        middleHeader.addEventListener('mouseover', middleHeaderMouseoverCallback)
+        middleHeader.addEventListener('mouseleave', middleHeaderMouseleaveCallback)
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            middleHeader.removeEventListener('mouseover', middleHeaderMouseoverCallback)
+            middleHeader.removeEventListener('mouseleave', middleHeaderMouseleaveCallback)
         };
     }, []);
+
+
+    const middleHeaderMouseoverCallback = () => {
+        if (transformed) {
+            let headerBottom = doc.querySelector('#header-bottom-wrapper')
+            headerBottom.style.transform = 'translateY(40px)'
+        }
+    }
+
+    const middleHeaderMouseleaveCallback = (e: any) => {
+        let headerBottom = doc.querySelector('#header-bottom-wrapper')
+        let middleHeader = doc.querySelector('#middle-header')
+        if (e.target === middleHeader) return
+        headerBottom.style.transform = 'translateY(0px)'
+    }
+
+    useEffect(() => {
+        if (isTransformed && !isOpenDetails) {
+            console.log('translate')
+            let headerBottom = document.querySelector('#header-bottom-wrapper')
+            headerBottom.style.transform = 'translateY(0px)'
+        }
+    }, [isOpenDetails, isTransformed, doc])
 
     return (
         <div className={styles.headerPanel} id='header-wrapper'>
@@ -101,15 +137,9 @@ const Header :FC = ({
                     </div>
                 </div>
 
-
-                <HeaderBottom isOpenDetails={isOpenDetails} setIsOpenDetails={setIsOpenDetails} bottomLinks={bottomLinks} setActiveElement={setActiveElement} setBottomLinks={setBottomLinks}/>
+                <DynamicHeaderBottom isOpenDetails={isOpenDetails} setIsOpenDetails={setIsOpenDetails} bottomLinks={bottomLinks} setActiveElement={setActiveElement} setBottomLinks={setBottomLinks}/>
             </div>
-
-
-
         </div>
-
-
     );
 };
 

@@ -1,19 +1,17 @@
 import React, {FC} from 'react';
-import {IIconItem} from "./icon-items.data";
-import Link from "next/link";
 import styles from './HeaderIcons.module.scss'
+import CartIcon from "@/components/layout/header/header-icons/CartItcon/CartIcon";
+import ProfileIcon from "@/components/layout/header/header-icons/ProfileIcon/ProfileIcon";
+import FavoriteIcon from "@/components/layout/header/header-icons/FavoriteIcon/FavoriteIcon";
 
 
-const HeaderIcons :FC<{ iconItems: IIconItem[] }> = ({iconItems}) => {
+const HeaderIcons :FC = () => {
+
     return (
         <div className={styles.icons}>
-            {iconItems.map(item => (
-                <div key={item.link}>
-                    <Link href={item.link}>
-                        <item.icon />
-                    </Link>
-                </div>
-            ))}
+            <CartIcon />
+            <ProfileIcon  />
+            <FavoriteIcon />
         </div>
     );
 };

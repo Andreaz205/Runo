@@ -1,8 +1,7 @@
-import React, {Dispatch, FC, SetStateAction, useEffect, useRef, useState} from 'react';
+import React, {Dispatch, FC, SetStateAction, useEffect, useRef} from 'react';
 import Link from "next/link";
 import cn from "classnames";
 import styles from './LinkItem.module.scss'
-import {INavItem} from "./nav-item.interface";
 import headerBottomData from "../../header-bottom/header-bottom.data";
 
 const LinkItem :FC<{title: string; link: string; activeElement: string, setActiveElement: Dispatch<SetStateAction<string>>}> = ({
@@ -19,8 +18,6 @@ const LinkItem :FC<{title: string; link: string; activeElement: string, setActiv
         if (activeElement) {
             setActiveElement(activeElement.innerText)
             let bottomData = headerBottomData.find(item => item.name == activeElement?.innerText)
-            console.log('bottomData')
-            console.log(bottomData);
             setBottomLinks(bottomData?.items)
         }
 

@@ -4,15 +4,17 @@ import Image from "next/image";
 
 const Logo :FC= () => {
     return (
-        <div style={{display: 'flex', alignItems: 'center'}}>
-
-            <div>
-                <Image src={logo.src} alt="Logo" width={50} height={50}/>
-            </div>
-            <span>
+        <a href="/">
+            <div style={{display: 'flex', alignItems: 'center'}}>
+                <div>
+                    <Image src={logo.src} alt="Logo" width={50} height={50}/>
+                </div>
+                <span>
                 Золотое Руно
             </span>
-        </div>
+            </div>
+        </a>
+
     );
 };
 

@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-console.log(process.env.REACT_APP_SERVER_URL)
 const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,

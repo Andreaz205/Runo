@@ -1,23 +1,18 @@
 .bannerWrapper{
 
   .banner{
-    height: 800px;
+    height: 750px;
     width: 100%;
     overflow: hidden;
     position: relative;
 
     .list{
       height: 100%;
-      display: flex;
-      flex-wrap: nowrap;
+      white-space: nowrap;
       transition: 0.4s ease-in-out;
 
-
       .imageWrapper{
-        height: 100%;
-        min-width: 100%;
-        overflow: hidden;
-        background-color: #f1f1f1;
+        //здесь стили заданы через js
       }
 
       img{
@@ -43,13 +38,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 10px;
+        padding: 0 40px;
 
         .arrow{
-          width: 100px;
-          height: 100px;
+          width: 60px;
+          height: 60px;
           background-color: #c6c6c6;
-          border-radius: 50px;
+          border-radius: 30px;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -57,8 +52,8 @@
           border: none;
 
           >svg{
-            height: 100px;
-            width: 100px;
+            height: 60px;
+            width: 60px;
           }
         }
       }

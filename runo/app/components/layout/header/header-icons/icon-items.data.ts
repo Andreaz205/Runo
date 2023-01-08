@@ -1,6 +1,7 @@
 import {INavItem} from "../header-navigation/navigation-items/nav-item.interface";
 import {IconType} from "react-icons";
-import {FaRegHeart, FaShoppingBag, FaUserAlt} from "react-icons/fa";
+import {FaRegHeart, FaUserAlt} from "react-icons/fa";
+import {BsBag, BsPerson} from "react-icons/bs";
 
 export interface IIconItem extends Pick<INavItem, 'link'> {
     icon: IconType
@@ -8,11 +9,11 @@ export interface IIconItem extends Pick<INavItem, 'link'> {
 
 const iconItemsData: IIconItem[] = [
     {
-        icon: FaShoppingBag,
+        icon: BsBag,
         link: '/cart'
     },
     {
-        icon: FaUserAlt,
+        icon: BsPerson,
         link: '/profile'
     },
     {

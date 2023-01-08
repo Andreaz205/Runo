@@ -3,7 +3,7 @@ import {INavItem} from "./nav-item.interface";
 const NavigationItems: INavItem[] = [
     {
         title: 'Товары',
-        link: '/залупа',
+        link: '/catalog',
     },
     {
         title: 'Комнаты',

@@ -4,7 +4,6 @@ import { HiSearch } from 'react-icons/hi'
 
 const Search :FC = () => {
     const [searchTerm, setSearchTerm]= useState<string>('')
-    console.log(searchTerm)
     return (
         <div className={styles.search}>
             <input type="text" placeholder='Введите запрос' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>

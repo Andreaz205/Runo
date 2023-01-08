@@ -3,7 +3,7 @@ import {INavItem} from "../header-navigation/navigation-items/nav-item.interface
 const headerBottomData = [
     {
         name: 'Товары',
-        link: 'a',
+        link: '/catalog',
         items: [
             {
                 title: 'Акции',

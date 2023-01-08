@@ -1,17 +1,19 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from './HeaderBottom.module.scss'
-import Details from "./Details";
+import Details from "./Details/Details";
 import headerBottomData from "./header-bottom.data";
 import LinkItem from "../header-navigation/navigation-items/LinkItem";
 import {NavEnum} from "../header-navigation/navigation-items/nav-enum.interface";
 import BottomLinkItem from "./BottomLinkItem";
+import {CategoryService} from "@/services/CategoryService";
 
 const HeaderBottom = ({setActiveElement, setIsOpenDetails, isOpenDetails, bottomLinks, setBottomLinks}) => {
+
     const [term, setTerm] = useState<NavEnum>(NavEnum.goods)
     const ref = useRef<HTMLDivElement | null>(null)
+    const [categories, setCategories] = useState()
 
     const enterCallback = (e: any) => {
-        console.log(e.relatedTarget)
         setIsOpenDetails(true)
     }
 
@@ -30,8 +32,20 @@ const HeaderBottom = ({setActiveElement, setIsOpenDetails, isOpenDetails, bottom
     }
 
     useEffect(() => {
+
         ref?.current?.addEventListener('mouseenter', enterCallback)
         ref?.current?.addEventListener('mouseleave', leaveCallback)
+        CategoryService.all()
+            .then(({data}) => {
+                if (data && data?.length) {
+                    data?.map(category => {
+                        category.link = `/catalog?categoryId=${category.id}`
+                    })
+                    data = data?.filter(category => category['is_published'] === true)
+                }
+               setCategories(data)
+            })
+            .catch(e => alert(e))
 
         return () => {
             ref?.current?.removeEventListener('mouseenter', enterCallback)
@@ -39,13 +53,29 @@ const HeaderBottom = ({setActiveElement, setIsOpenDetails, isOpenDetails, bottom
         }
     }, [])
 
+
+        // CategoryService.all()
+        //     .then((res) =>
+        //         // if (res.data && res.data?.length) {
+        //             // res.data?.map(category => {
+        //             //     // category.link = `/catalog?categoryId=${category.id}`
+        //             // })
+        //         // }
+        //        // setCategories(res.data)
+        //         console.log(res)
+        //     )
+        //     .catch(e => alert(e))
+
+
+
     return (
         <div className={styles.bottomWrapper} id='header-bottom-wrapper'>
             <div className={styles.bottom}>
                 <div className={styles.bottomBlock} >
                     <div className={styles.linksBlock} id='header-bottom' ref={ref}>
-                        {bottomLinks && bottomLinks.map(el =>(
-                            <BottomLinkItem title={el.title} link={el.link} key={el.link}/>
+                        <BottomLinkItem title={'Акции'} link={'accii'}/>
+                        {categories && categories.map(el =>(
+                            <BottomLinkItem title={el.name} link={el.link} key={el.link}/>
                         ))}
                         <Details setActiveElement={setActiveElement} setIsOpenDetails={setIsOpenDetails} isOpenDetails={isOpenDetails} setDefaultBottomLinks={setDefaultBottomLinks}/>
                     </div>

@@ -1,9 +1,10 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const instance = axios.create({
-    baseURL: 'http://127.0.0.1:8000',
+    baseURL: 'http://localhost:8000',
     withCredentials: true,
     headers: {
-        'Accept': 'application/json'
+        'Accept': 'application/json',
     }
 })

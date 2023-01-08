@@ -15,7 +15,6 @@ const NavigationItems :FC<{ navItems: INavItem[] }> = ({ activeElement, setActiv
         return () => ref?.current?.removeEventListener('mouseleave', setDefaultActiveElement)
     }, [])
 
-    console.log(headerBottomData[0])
 
     return (
         <div className={styles.navigationWrapper} ref={ref} id='navigation'>
